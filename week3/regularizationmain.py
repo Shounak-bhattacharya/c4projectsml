@@ -7,7 +7,7 @@ from plotData import plotData
 from predict import predict
 from loadData import loaddata
 from sklearn.preprocessing import PolynomialFeatures
-from costFunctionReg import costFunctionReg, gradientReg
+from costreg import costFunctionReg, gradientReg
 
 data2 = loaddata('ex2data2.txt', ',')
 plotData(data2, 'Microchip Test 1', 'Microchip Test 2', 'y = 1', 'y = 0')
@@ -30,7 +30,7 @@ fig, axes = plt.subplots(1,3, sharey = True, figsize=(17,5))
 # Lambda = 1 : Looks about right
 # Lambda = 100 : Too much regularization --> high bias
 
-for i, C in enumerate([0, 1, 100]):
+for i, C in enumerate([0.01, 1, 100]):
     # Optimize costFunctionReg
     res2 = minimize(costFunctionReg, initial_theta, args=(C, XX, y), method=None, jac=gradientReg, options={'maxiter':3000})
 
